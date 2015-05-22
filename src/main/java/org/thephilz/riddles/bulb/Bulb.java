@@ -3,12 +3,12 @@ package org.thephilz.riddles.bulb;
 /**
  *
  */
-public class TheBulb {
+public class Bulb {
 
     boolean initiallyOn;
     boolean on;
 
-    public TheBulb(boolean initiallyOn) {
+    public Bulb(boolean initiallyOn) {
         this.initiallyOn = initiallyOn;
         this.on = initiallyOn;
     }
