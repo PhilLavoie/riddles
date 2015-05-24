@@ -3,39 +3,20 @@ package org.thephilz.riddles.bulb;
 /**
  *
  */
-public class Bulb {
+class Bulb {
 
-    boolean initiallyOn;
-    boolean on;
+    protected static boolean INITIAL_STATE = true;
+    protected boolean state;
 
-    public Bulb(boolean initiallyOn) {
-        this.initiallyOn = initiallyOn;
-        this.on = initiallyOn;
+    protected Bulb() {
+        this.state = INITIAL_STATE;
     }
 
-    public boolean isOn() { return this.on; }
-    public boolean isOff() { return !isOn(); }
-
-    public boolean isInitiallyOn() { return this.initiallyOn; }
-    public boolean isInitiallyOff() { return !isInitiallyOn(); }
-
-    public boolean isInInitialState() {
-        return this.on == this.initiallyOn;
+    protected boolean isInInitialState() {
+        return this.state == INITIAL_STATE;
     }
 
-    public void setOn() {
-        this.on = true;
-    }
-
-    public void setOff() {
-        this.on = false;
-    }
-
-    public void switchIt() {
-        this.on = !this.on;
-    }
-
-    public void resetToInitial() {
-        this.on = this.initiallyOn;
+    protected void switchIt() {
+        this.state = !this.state;
     }
 }

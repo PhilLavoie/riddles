@@ -5,13 +5,13 @@ package org.thephilz.riddles.bulb;
  */
 public class Room {
 
-    private final TheBulb bulb;
+    private final Bulb bulb;
 
-    public Room(TheBulb bulb) {
+    public Room(Bulb bulb) {
         this.bulb = bulb;
     }
 
-    public TheBulb getBulb() {
+    public Bulb getBulb() {
         return this.bulb;
     }
 }
