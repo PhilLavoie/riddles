@@ -1,11 +1,12 @@
 package org.thephilz.riddles.bulb.participants;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
  */
-public class Participants {
+public class Participants implements Iterable<Participant> {
 
     protected ArrayList<Participant> participants;
 
@@ -26,5 +27,10 @@ public class Participants {
 
     public Participant get(int index) {
         return this.participants.get(index);
+    }
+
+    @Override
+    public Iterator<Participant> iterator() {
+        return this.participants.iterator();
     }
 }

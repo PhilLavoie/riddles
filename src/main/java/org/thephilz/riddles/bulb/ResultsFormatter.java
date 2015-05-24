@@ -1,6 +1,7 @@
 package org.thephilz.riddles.bulb;
 
 import java.io.OutputStream;
+import java.io.PrintStream;
 
 /**
  *
@@ -13,7 +14,7 @@ public class ResultsFormatter {
         this.results = results;
     }
 
-    public void printHere(OutputStream outputStream) {
-
+    public void printHere(PrintStream stream) {
+        stream.format("hello");
     }
 }

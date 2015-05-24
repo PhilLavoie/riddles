@@ -3,10 +3,9 @@ package org.thephilz.riddles.bulb;
 import org.thephilz.riddles.bulb.furniture.Room;
 import org.thephilz.riddles.bulb.participants.Participant;
 import org.thephilz.riddles.bulb.participants.Participants;
-import org.thephilz.riddles.bulb.participants.ParticipantsSupplier;
+import org.thephilz.riddles.bulb.participants.CyclicalSupplier;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -58,14 +57,11 @@ public class RiddleInstance {
 
     public RiddleResults solve() {
         final ArrayList<ParticipantProxy> proxies = new ArrayList<>();
-        Stream.generate(new ParticipantsSupplier(this.participants))
-                .map(
-                    participant -> {
-                        ParticipantProxy proxy = new ParticipantProxy(participant);
-                        proxies.add(proxy);
-                        return proxy;
-                    }
-                )
+        for (Participant participant: this.participants) {
+            proxies.add(new ParticipantProxy(participant));
+        }
+
+        Stream.generate(new CyclicalSupplier<>(proxies))
                 .anyMatch(
                         participant -> {
                             participant.goToRoom(room);
