@@ -1,15 +1,15 @@
-package org.thephilz.riddles.bulb;
+package org.thephilz.riddles.bulb.participants;
 
 import java.util.function.Supplier;
 
 /**
  *
  */
-class ParticipantsSupplier implements Supplier<Participant> {
+public class ParticipantsSupplier implements Supplier<Participant> {
     protected Participants participants;
     protected int currentIndex;
 
-    protected ParticipantsSupplier(Participants participants) {
+    public ParticipantsSupplier(Participants participants) {
         this.participants = participants;
         this.currentIndex = 0;
     }

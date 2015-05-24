@@ -1,5 +1,8 @@
 package org.thephilz.riddles.bulb;
 
+import org.thephilz.riddles.bulb.furniture.Bulb;
+import org.thephilz.riddles.bulb.furniture.Room;
+
 /**
  *
  */

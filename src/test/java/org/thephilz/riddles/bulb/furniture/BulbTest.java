@@ -1,6 +1,7 @@
-package org.thephilz.riddles.bulb;
+package org.thephilz.riddles.bulb.furniture;
 
 import org.junit.Test;
+import org.thephilz.riddles.bulb.furniture.Bulb;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,6 @@
-package org.thephilz.riddles.bulb;
+package org.thephilz.riddles.bulb.participants;
+
+import org.thephilz.riddles.bulb.furniture.Room;
 
 /**
  *

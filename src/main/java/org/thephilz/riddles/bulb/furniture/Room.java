@@ -1,11 +1,11 @@
-package org.thephilz.riddles.bulb;
+package org.thephilz.riddles.bulb.furniture;
 
 /**
  *
  */
 public class Room {
 
-    private final Bulb bulb;
+    protected final Bulb bulb;
 
     public Room(Bulb bulb) {
         this.bulb = bulb;

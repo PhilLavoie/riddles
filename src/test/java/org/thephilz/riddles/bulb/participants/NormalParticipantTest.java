@@ -1,6 +1,8 @@
-package org.thephilz.riddles.bulb;
+package org.thephilz.riddles.bulb.participants;
 
 import org.junit.Test;
+import org.thephilz.riddles.bulb.furniture.Bulb;
+import org.thephilz.riddles.bulb.furniture.Room;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;

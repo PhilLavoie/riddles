@@ -1,17 +1,15 @@
-package org.thephilz.riddles.bulb;
+package org.thephilz.riddles.bulb.participants;
 
 import java.util.ArrayList;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 /**
  *
  */
-class Participants {
+public class Participants {
 
     protected ArrayList<Participant> participants;
 
-    protected Participants(int noParticipants) {
+    public Participants(int noParticipants) {
         assert noParticipants > 1;
 
         this.participants = new ArrayList<>(noParticipants);
@@ -22,11 +20,11 @@ class Participants {
         }
     }
 
-    protected int size() {
+    public int size() {
         return this.participants.size();
     }
 
-    protected Participant get(int index) {
+    public Participant get(int index) {
         return this.participants.get(index);
     }
 }
