@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by phil on 6/23/15.
+ *
  */
 public class SecondStatement {
-
     protected Result result;
 
     protected SecondStatement(Iterable<Product> candidateProducts) {

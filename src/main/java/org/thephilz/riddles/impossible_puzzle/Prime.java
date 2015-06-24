@@ -1,17 +1,20 @@
 package org.thephilz.riddles.impossible_puzzle;
 
 /**
- * Created by phil on 6/22/15.
+ *
  */
 public class Prime {
 
-    //First primes number that are under 100.
+    //First primes number that are under or equals to 100.
     private static int[] firstPrimes = {
        2,  3,  5,  7, 11, 13, 17, 19, 23, 29,
       31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
       73, 79, 83, 89, 97
     };
 
+    /**
+     * A matrix holding the sums of the primes listed above.
+     */
     private static int[][] primesSums;
 
     static {
