@@ -1,26 +1,30 @@
 package org.thephilz.riddles.circleofdeath;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import org.thephilz.riddles.circleofdeath.circleofdeath.Participant;
+import org.thephilz.riddles.circleofdeath.snapshot.CircleOfDeathSnapshot;
 
 import java.util.List;
 
 public class Result {
 
-    private final List<List<Participant>> alivePerRound;
+    private final ImmutableList<CircleOfDeathSnapshot> snapshots;
+    private final Participant winner;
 
-    Result() {
-        this.alivePerRound = Lists.newArrayList();
+    Result(ImmutableList<CircleOfDeathSnapshot> initialState, Participant winner) {
+        this.snapshots = initialState;
+        this.winner = winner;
     }
 
-    public static Result create() {
-        return new Result();
+    static Result create(List<CircleOfDeathSnapshot> snapshots, Participant winner) {
+        return new Result(ImmutableList.copyOf(snapshots), winner.copy());
     }
 
-    /**
-     * Makes a copy
-     */
-    public void appendAliveParticipantsForRound(List<Participant> participants) {
-        alivePerRound.add(ImmutableList.copyOf(participants));
+    ImmutableList<CircleOfDeathSnapshot> getSnapshots() {
+        return snapshots;
+    }
+
+    Participant getWinner() {
+        return winner;
     }
 }
