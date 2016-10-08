@@ -18,6 +18,7 @@ public class Game {
 
     Result solve(CircleOfDeath circleOfDeath, SnapshotTaker snapshotTaker) {
         List<CircleOfDeathSnapshot> snapshots = Lists.newArrayList();
+        final int noParticipants = circleOfDeath.participants().size();
 
         maybeTakeAndAddSnapshot(() -> snapshotTaker.onStart(circleOfDeath), snapshots);
         
@@ -28,7 +29,7 @@ public class Game {
 
         maybeTakeAndAddSnapshot(() -> snapshotTaker.onTermination(circleOfDeath), snapshots);
         
-        return Result.create(snapshots, circleOfDeath.guyHoldingSword());
+        return Result.create(snapshots, circleOfDeath.guyHoldingSword(), noParticipants);
     }
 
     private void doCycle(CircleOfDeath circleOfDeath, SnapshotTaker SnapshotTaker,

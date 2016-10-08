@@ -41,7 +41,7 @@ public class CircleOfDeath {
     }
 
     public ImmutableList<Participant> participants() {
-        return ImmutableList.copyOf(participants);
+        return participants;
     }
 
     public boolean oneManStanding() {
