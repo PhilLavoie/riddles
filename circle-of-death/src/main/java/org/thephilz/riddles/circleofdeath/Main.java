@@ -27,26 +27,35 @@ public class Main {
         createOutputDirectoryIfNonExistent(outputDirectory);
 
         List<Result> results = Lists.newArrayList();
-        SnapshotTaker snapshotTaker = new SnapshotTaker(SnapshotOccurrence.EVERY_TURN);
-        IntStream.rangeClosed(1, 100).forEach(noParticipants -> {
+        SnapshotTaker snapshotTaker = new SnapshotTaker(SnapshotOccurrence.NEVER);
+        IntStream.rangeClosed(1, 1000).forEach(noParticipants -> {
             logger.info("solving circle of death for {} participants", noParticipants);
 
             Game game = new Game();
             Result result =
                 game.solve(CircleOfDeath.withNumberOfParticipants(noParticipants), snapshotTaker);
 
-            Path outputFile = outputDirectory.resolve("circle_of_death_" + noParticipants + ".log");
-
-            outputResult(result, outputFile);
-            logger.info("result file {} created", outputFile);
             results.add(result);
         });
+
+        logger.info("all puzzles solved, outputting results...");
 
         Path outputSummaryFile = outputDirectory.resolve("output_summary.log");
 
         outputSummary(results, outputSummaryFile);
         logger.info("summary file {} created", outputSummaryFile);
 
+        results.forEach(result -> {
+            if (result.getSnapshots().isEmpty()) {
+                return;
+            }
+
+            Path outputFile =
+                outputDirectory.resolve("circle_of_death_" + result.getNoParticipants() + ".log");
+
+            outputResult(result, outputFile);
+            logger.info("result file {} created", outputFile);
+        });
     }
 
     private static void outputSummary(List<Result> results, Path outputSummaryFile) {
@@ -60,9 +69,16 @@ public class Main {
     }
 
     private static void outputSummary(List<Result> results, PrintWriter writer) {
-        results.forEach(result -> writer.println(
-            "Number of participants: " + result.getNoParticipants() + " winner: " + result.getWinner().getOrdinal())
-        );
+        //Header
+        writer.printf("%22s, %22s, %22s, %22s", "Number of participants", "Winner",
+            "Number of cycles", "Number of turns");
+        writer.println();
+
+        results.forEach(result -> {
+            writer.printf("%22s, %22s, %22s, %22s", result.getNoParticipants(),
+                result.getWinner().getOrdinal(), result.getNoCycles(), result.getNoTurns());
+            writer.println();
+        });
     }
 
     private static void createOutputDirectoryIfNonExistent(Path outputDirectory) {

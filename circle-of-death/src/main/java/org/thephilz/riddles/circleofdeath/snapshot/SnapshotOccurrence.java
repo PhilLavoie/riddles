@@ -17,6 +17,23 @@ public enum SnapshotOccurrence {
         @Override public boolean takeSnapshotOnTermination() {
             return true;
         }
+    },
+    NEVER {
+        @Override public boolean takeSnapshotOnTurn() {
+            return false;
+        }
+
+        @Override public boolean takeSnapshotOnCycle() {
+            return false;
+        }
+
+        @Override public boolean takeSnapshotOnStart() {
+            return false;
+        }
+
+        @Override public boolean takeSnapshotOnTermination() {
+            return false;
+        }
     };
 
 
